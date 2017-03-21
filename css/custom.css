@@ -9,4 +9,8 @@ html {
     cursor: default;
     overflow: none;
 }
-        
+
+.container {
+    
+    text-align: center;
+}

@@ -18,12 +18,17 @@
 </head>
 <body class="ng-cloak" ng-app="spotApp" ng-controller="MainCtrl as main">
     
+    <div class="container">
+        <h1>{{main.heading}}</h1>
+        <ng-view>
+        
+        </ng-view>
+    </div>
     
-    {{main.test}}
-
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/controllers/mainCtrl.js"></script>
+    <script type="text/javascript" src="js/angular-route.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
