@@ -1,22 +1,12 @@
-/*(function() {
+(function() {
     'use strict';
 
     angular
         .module('spotApp')
-        .controller('MainController', MainController);
+        .controller('MainCtrl',MainCtrl);
 
-    //Controller.$inject = [];
-
-    function MainController(){
+    function MainCtrl(){
         var vm = this;
-        vm.test = 'Controller';
-        
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-        }
+        vm.heading = "Spotify API Test";
     }
-})();*/
+})();
