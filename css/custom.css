@@ -10,7 +10,24 @@ html {
     overflow: none;
 }
 
+
+
 .container {
     
     text-align: center;
+}
+.row {
+    margin: 25px;
+    
+}
+.textBox {
+    padding: 10px;
+}
+.linkButton {
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    height: 60px;
+    border: 1px solid gray;
 }
