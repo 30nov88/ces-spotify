@@ -20,12 +20,14 @@
 
     function fn_MainCtrl(){
         var vm = this;
-        vm.heading = "Spotify API";
+        vm.heading = "Spotify API Test";
     }
     function fn_HomeCtrl(){
         var vm = this;
-        vm.songName = "song1";
-        vm.artistName = "artist1";
+        $('.loader').fadeOut();
+        
+        /*vm.songName = "song1";
+        vm.artistName = "artist1";*/
     }
 })();
 

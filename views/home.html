@@ -2,14 +2,18 @@
 
 <div ng-controller="HomeCtrl as home">
     <div class="row">
-        <span class="equalHalf alignRight">Search by Artist:</span>
-        <span class="equalHalf alignLeft"><input id="txtArtist" class="textBox" name="txt_artist" ng-model="home.artistName" type="text" maxlength="23" placeholder="Limit to 25 characters"></span>
+        <span class="equalHalf unselectable">Search by Artist:</span>
+        <span class="equalHalf alignLeft">
+            <input id="txtArtist" class="textBox" name="txt_artist" ng-model="home.artistName" ng-focus="home.songName=''" type="text" maxlength="23" placeholder="Limit to 25 characters">
+        </span>
     </div>
-
+    <div class="row unselectable">(or)</div>
     <div class="row">
-        <span class="equalHalf alignRight"><label >Search by Song:</label></span>
-        <span class="equalHalf alignLeft"><input id="txtSong" class="textBox" name="txt_song" ng-model="home.songName" type="text" maxlength="23" placeholder="Limit to 25 characters"></span>
+        <span class="equalHalf unselectable">Search by Song:</span>
+        <span class="equalHalf alignLeft">
+            <input id="txtSong" class="textBox" name="txt_song" ng-model="home.songName" ng-focus="home.artistName=''" type="text" maxlength="23" placeholder="Limit to 25 characters">
+        </span>
     </div>
     
-    <a class="row linkButton" ng-click="btnShowClick" href>Show</a>
+    <a class="row linkButton unselectable" ng-click="btnShowClick" href>Search</a>
 </div>

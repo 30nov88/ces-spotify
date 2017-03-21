@@ -17,9 +17,9 @@
     <script src="//connect.soundcloud.com/sdk.js"></script>
 </head>
 <body class="ng-cloak" ng-app="spotApp" ng-controller="MainCtrl as main">
-    
+    <div class="loader"></div>
     <div id="divContainer">
-        <div id="divHeader"><h1>{{main.heading}}</h1></div>
+        <div id="divHeader"><h1 class="unselectable">{{main.heading}}</h1></div>
         <div id="divBody" ng-view></div>
     </div>
     
