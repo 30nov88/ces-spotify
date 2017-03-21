@@ -18,11 +18,9 @@
 </head>
 <body class="ng-cloak" ng-app="spotApp" ng-controller="MainCtrl as main">
     
-    <div class="container">
-        <h1>{{main.heading}}</h1>
-        <ng-view>
-        
-        </ng-view>
+    <div id="divContainer">
+        <div id="divHeader"><h1>{{main.heading}}</h1></div>
+        <div id="divBody" ng-view></div>
     </div>
     
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
