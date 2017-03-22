@@ -3,10 +3,10 @@
 
     angular
         .module('spotApp')
-        .controller('MainCtrl',MainCtrl);
+        .controller('MainCtrl', MainCtrl);
 
     function MainCtrl(){
         var vm = this;
-        vm.heading = "Spotify API Test";
+        vm.heading = "Spotify search";
     }
 })();

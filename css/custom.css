@@ -12,7 +12,7 @@ html {
 }
 #divContainer {
     max-width: 800px;
-    min-width: 650px;
+    min-width: 600px;
     min-height: 450px;
     margin: 5% auto;
     text-align: center;
@@ -54,6 +54,7 @@ html {
     padding:9px;
     text-align:center;
     border-radius:6px;
+    font-weight: bold;
     -webkit-box-shadow:0 0 10px -1px rgba(56,56,56,1);
     -moz-box-shadow:0 0 10px -1px rgba(56,56,56,1);
     box-shadow:0 0 10px -1px rgba(56,56,56,1)
@@ -61,8 +62,7 @@ html {
 
 /* HOME */
 .row {
-    margin: 25px;
-
+    margin: 30px 0px;
 }
 .textBox {
     padding: 21px;
@@ -72,6 +72,7 @@ html {
     background: none;
     color: #008B8B;
     border: 2px solid #66CDAA;
+    cursor: pointer;
 }
 .linkButton {
     display: block;
