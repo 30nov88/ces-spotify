@@ -1,3 +1,16 @@
-<div id="divResult">
+<div>
+    <span class="linkButton unselectable homeButton" ng-click="result.goHome()">Back</span>
+
+    <div class="dataBlock"> Search results for <span class="strong"> &quot;{{result.searchQuery}}&quot;</span></div>
+
     
+    
+    <div ng-if="result.type" id="divArtists">
+        <artists-view></artists-view>
+    </div>
+    
+    <div ng-if="!result.type" diid="divSongs">
+        SONGS VIEW
+    </div>
+    <!--<div> {{result.jsonStr}} </div>-->
 </div>

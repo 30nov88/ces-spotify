@@ -5,21 +5,26 @@
         .module('spotApp')
         .controller('ResultCtrl', ResultCtrl);
 
-    ResultCtrl.$inject = ['$location'];
+    ResultCtrl.$inject = ['$location', 'getResultService'];
 
     /* @ngInject */
-    function ResultCtrl($location){
+    function ResultCtrl($location, getResultService){
         var vm = this;
-        //vm.property = 'Controller';
-        
-// ON CLICK OF BACK BUTTON
-        // $location.path('/');
-        
-        //activate();
-// ACCESS LOCALSTORAGE
-        ////////////////
+        vm.goHome = goHome;
+        vm.type = false;
 
-        /*function activate() {
-        }*/
-    }
+        init();
+
+        function init(){
+            vm.resultObj = getResultService.getParseResult();
+
+            vm.type = vm.resultObj.type;
+            vm.jsonStr = vm.resultObj.jsonStr;
+            vm.searchQuery = vm.resultObj.searchQuery;
+        }
+
+        function goHome(){
+            $location.path('/'); 
+        }
+    } // RESULT CTRL
 })();

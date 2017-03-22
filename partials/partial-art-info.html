@@ -1,0 +1,12 @@
+
+<span ng-repeat="(key,val) in vm.result.jsonStr.artists">
+    <span ng-if="key==='items'">
+        <span ng-repeat="(keyName, elems) in val" class="resultBlock">
+            {{elems.name}}
+            <!--<img ng-if="elems.images.length>0" src="{{elems.images[0].url}}" alt="img missing">-->
+        </span>
+    </span>
+    <span ng-if="key==='total'" class="resultBlock dataBlock">
+        Total results: {{val}}
+    </span>
+</span>

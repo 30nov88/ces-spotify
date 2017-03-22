@@ -14,13 +14,13 @@ html {
     max-width: 800px;
     min-width: 600px;
     min-height: 450px;
-    margin: 5% auto;
+    margin: 3% auto;
     text-align: center;
     border: 1px solid #DCD;
     font-size: 1.2em;
 }
 #divHeader {
-    min-height: 100px;
+    min-height: 50px;
 }
 #divBody {
     min-height: 350px;
@@ -86,7 +86,7 @@ html {
     text-decoration: none;   
 }
 .equalHalf {
-    width: 46%;
+    width:39%;
     display: inline-block;
 }
 .alignLeft {
@@ -105,4 +105,34 @@ html {
     color: #FFF;
     border: none;
     cursor: default;
+}
+
+/* RESULT */
+#divResult {
+    width: 100%;
+    height: 100%;
+    border: 1px dotted green;
+}
+.homeButton {
+    position: fixed;
+    width: 60px;
+    height: 25px;
+    left: -36%;
+    top: 0px;
+    font-size: 1em;
+}
+.strong {
+    font-weight: bold;
+}
+.resultBlock {
+    display: inline-block;
+    border: 1px dotted #DCD;
+    margin: 10px;
+    padding: 10px;
+}
+.dataBlock {
+    display: block;
+    color: #050;
+    border: none;
+    font-size: 1em;
 }

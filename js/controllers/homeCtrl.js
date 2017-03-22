@@ -6,9 +6,9 @@
         .module('spotApp')
         .controller('HomeCtrl',HomeCtrl);
 
-    HomeCtrl.$inject = ['$location', 'searchFact'];
+    HomeCtrl.$inject = ['$location', 'searchService'];
     
-    function HomeCtrl($location, searchFact){
+    function HomeCtrl($location, searchService){
         var vm = this;
         vm.btnSearchClick = btnSearchClick;
 
@@ -21,13 +21,14 @@
 
                 if(vm.songName) {
                   queryString = vm.songName;
-                  queryType = "track";
+                  queryType = "song";
                 } else {
                   queryString = vm.artistName;
                   queryType = "artist";
                 }
 
-                searchFact.searchSpotify(queryString, queryType).then(showResults);
+                searchService.searchSpotify(queryString, queryType).then(showResults);
+                //showResults();
             }
         } // BTN CLICK
         
