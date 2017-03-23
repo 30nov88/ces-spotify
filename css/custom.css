@@ -128,6 +128,10 @@ html {
     height: 150px;
     vertical-align: middle;
 }
+.resultBlock:hover{
+    cursor: pointer;
+    background-color: #F5F5F5;
+}
 .followersMeta{
     font-size: 0.7em;
     display: block;

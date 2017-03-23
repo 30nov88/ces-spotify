@@ -33,22 +33,39 @@
     /* @ngInject */
     function artistsCtrl(getResultService, searchService) {
         var vm = this;
-        vm.result = getResultService.getResult();
+        vm.init = init;
         vm.traversePage = traversePage;
-        vm.getTitle = getTitle;
-        vm.counter = getResultService.getCount();
+        vm.artistClick = artistClick;
 
-        function traversePage(urlStr){
+        vm.init();
+
+        function init(){
+            vm.artistView = true;
+            vm.result = getResultService.getResult();
+            vm.counter = getResultService.getCount();
+            vm.artistResult = {};
+        }
+
+        function artistClick(spotID){
             $('.loader').show();
-            searchService.searchSpotify(vm.result.searchQuery, "artist", urlStr).then(function(){
-                vm.result = getResultService.getParseResult();
-                vm.counter = getResultService.getCount();
+            vm.artistView = false;
+            searchService.searchArtAlbum(spotID).then(function(){
+                vm.artistResult = getResultService.getParseResult("artist_");
+                //vm.counter = getResultService.getCount();
                 $('.loader').fadeOut();
             });
         }
-        function getTitle(elems){
-            var titleValue = "title";
-            return titleValue;
+
+        function traversePage(urlStr){
+            $('.loader').show();
+            searchService.searchSpotify(vm.result.searchQuery, "artist", urlStr)
+                .then(renderTraversal);
+        }
+
+        function renderTraversal(){
+            vm.result = getResultService.getParseResult("");
+            vm.counter = getResultService.getCount();
+            $('.loader').fadeOut();
         }
     }
 })();

@@ -8,7 +8,8 @@
         var exports = {
             getParseResult: getParseResult,
             getResult: getResult,
-            getCount: getCount
+            getCount: getCount,
+            findKeyLocal: findKeyLocal
         };
         var resultObj = {};
 
@@ -27,27 +28,35 @@
             return countObj;
         }
 
-        function getParseResult(){
-            var tmpKey, tmpStr = "";
-            // TO GET THE LAST SEARCHED ITEM THROUGH THE SAVE PATTERN
-            for(var i=0; i<localStorage.length; i++) {
+        function findKeyLocal(inpPattern){
+            var tmpKey = 0, tmpStr = "";
+            for(var i = 0; i<localStorage.length; i++) {
                 tmpStr = localStorage.key(i);
-                if(tmpStr.startsWith(localStorage.length)) {
+                if(tmpStr.startsWith(inpPattern)) {
                     tmpKey = i;
                     break;
                 }
             }
+            return tmpKey;
+        }
+
+        function getParseResult(patternStart){
+            var tmpStr = patternStart + localStorage.length + "_"
+            // TO GET THE LAST SEARCHED ITEM USING SAVE PATTERN
+            var tmpKey = findKeyLocal(tmpStr);
+
             if(tmpKey !== undefined) {
                 tmpKey = localStorage.key(tmpKey);
                 tmpStr = localStorage[tmpKey];
 
-                // ERROR-PRONE
-                // assumption that the string doesn't have any (other) special characters
-                tmpKey = tmpKey.split("_");
-
-                resultObj.type = (tmpKey[2] === "artist") ? true : false;
+                if(patternStart === ""){
+                    // ERROR-PRONE
+                    // assumption that the string doesn't have any (other) special characters
+                    tmpKey = tmpKey.split("_");
+                    resultObj.type = (tmpKey[2] === "artist") ? true : false;
+                    resultObj.searchQuery = tmpKey[1];
+                }
                 resultObj.jsonStr = JSON.parse(tmpStr);
-                resultObj.searchQuery = tmpKey[1];
             }
 
             return resultObj;

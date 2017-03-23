@@ -16,7 +16,7 @@
         init();
 
         function init(){
-            vm.resultObj = getResultService.getParseResult();
+            vm.resultObj = getResultService.getParseResult("");
 
             $('.loader').fadeOut();
             vm.type = vm.resultObj.type;
