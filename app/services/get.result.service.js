@@ -29,7 +29,7 @@
                     break;
                 }
             }
-            if(tmpKey) {
+            if(tmpKey !== undefined) {
                 tmpKey = localStorage.key(tmpKey);
                 tmpStr = localStorage[tmpKey];
 
