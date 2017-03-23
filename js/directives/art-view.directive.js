@@ -16,7 +16,7 @@
             bindToController: true,
             controller: artistsCtrl,
             controllerAs: 'vm',
-            templateUrl: 'partials/partial-art-info.html',
+            templateUrl: 'partials/art-view.partial.html',
             link: link,
             restrict: 'E',
             scope: {}

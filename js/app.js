@@ -10,12 +10,12 @@
         $locationProvider.html5Mode({enabled: true, requireBase: false});
         $routeProvider
         .when("/", {
-            templateUrl : "views/home.html",
+            templateUrl : "views/home.view.html",
             controller: "HomeCtrl",
             controllerAs: "home"
         })
         .when("/result", {
-            templateUrl : "views/result.html",
+            templateUrl : "views/result.view.html",
             controller: "ResultCtrl",
             controllerAs: "result"
         })
