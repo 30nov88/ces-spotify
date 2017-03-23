@@ -8,6 +8,7 @@
 
     HomeCtrl.$inject = ['$location', 'searchService'];
     
+    /* @ngInject */
     function HomeCtrl($location, searchService){
         var vm = this;
         vm.btnSearchClick = btnSearchClick;

@@ -1,3 +1,9 @@
+
+/**
+ * @desc to bind the artists data by parsing the json
+ * @example <artists-view></artists-view>
+ */
+
 (function () {
     'use strict';
 
@@ -5,7 +11,6 @@
         .module('spotApp')
         .directive('artistsView', artistsView);
 
-    /* @ngInject */
     function  artistsView() {
         var directive = {
             bindToController: true,

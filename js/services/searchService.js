@@ -7,13 +7,16 @@
 
     searchService.$inject = ['constants', '$http'];
 
+    /* @ngInject */
     function searchService(constants, $http){
         var exports = {
             searchSpotify: searchSpotify
         };
         
         return exports;
-        
+
+        ////////////
+
         function searchSpotify(queryString, queryType){
             var tmpStr = localStorage.length + 1;
             var savePattern = tmpStr + "_" + queryString + "_" + queryType;
@@ -36,6 +39,7 @@
 
             function errorCallback(error){
                 showToast("Something went wrong. Kindly reload the page", "message", "show");
+                console.log(error.data);
             }
         }  // SEARCH SPOTIFY
 
