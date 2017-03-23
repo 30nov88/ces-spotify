@@ -5,10 +5,10 @@
         .module('spotApp')
         .factory('searchService', searchService);
 
-    searchService.$inject = ['constants', '$http'];
+    searchService.$inject = ['constants', '$http', 'logger'];
 
     /* @ngInject */
-    function searchService(constants, $http){
+    function searchService(constants, $http, logger){
         var exports = {
             searchSpotify: searchSpotify
         };
@@ -39,7 +39,7 @@
 
             function errorCallback(error){
                 showToast("Something went wrong. Kindly reload the page", "message", "show");
-                console.log(error.data);
+                logger.logError(error);
             }
         }  // SEARCH SPOTIFY
 

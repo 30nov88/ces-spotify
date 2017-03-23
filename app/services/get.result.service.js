@@ -20,8 +20,7 @@
         }
 
         function getParseResult(){
-            var tmpKey, tmpStr;
-            
+            var tmpKey, tmpStr = "";
             // TO GET THE LAST SEARCHED ITEM THROUGH THE SAVE PATTERN
             for(var i=0; i<localStorage.length; i++) {
                 tmpStr = localStorage.key(i);
@@ -30,17 +29,18 @@
                     break;
                 }
             }
-            tmpKey = localStorage.key(tmpKey);
-            tmpStr = localStorage[tmpKey];
+            if(tmpKey) {
+                tmpKey = localStorage.key(tmpKey);
+                tmpStr = localStorage[tmpKey];
 
-            // ERROR-PRONE
-            // assumption that the string doesn't have any (other) special characters
-            // and localstorage is non-empty
-            tmpKey = tmpKey.split("_");
+                // ERROR-PRONE
+                // assumption that the string doesn't have any (other) special characters
+                tmpKey = tmpKey.split("_");
 
-            resultObj.type = (tmpKey[2] === "artist") ? true : false;
-            resultObj.jsonStr = JSON.parse(tmpStr);
-            resultObj.searchQuery = tmpKey[1];
+                resultObj.type = (tmpKey[2] === "artist") ? true : false;
+                resultObj.jsonStr = JSON.parse(tmpStr);
+                resultObj.searchQuery = tmpKey[1];
+            }
 
             return resultObj;
         } // GET PARSE RESULT

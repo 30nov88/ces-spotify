@@ -28,7 +28,7 @@
         }
     }
 
-    artistCtrl.$inject = ['getResultService'];
+    artistsCtrl.$inject = ['getResultService'];
 
     /* @ngInject */
     function artistsCtrl(getResultService) {
