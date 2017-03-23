@@ -7,7 +7,8 @@
     function  getResultService(){
         var exports = {
             getParseResult: getParseResult,
-            getResult: getResult
+            getResult: getResult,
+            getCount: getCount
         };
         var resultObj = {};
 
@@ -17,6 +18,13 @@
 
         function getResult(){
             return resultObj;
+        }
+
+        function getCount(){
+            var countObj = {};
+            countObj.start = resultObj.jsonStr.artists.offset + 1;
+            countObj.end = resultObj.jsonStr.artists.offset + resultObj.jsonStr.artists.items.length;
+            return countObj;
         }
 
         function getParseResult(){

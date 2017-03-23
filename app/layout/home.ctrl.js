@@ -13,6 +13,8 @@
         var vm = this;
         vm.btnSearchClick = btnSearchClick;
 
+        $('.loader').fadeOut();
+
         function btnSearchClick(){
             if(!(vm.songName || vm.artistName)) {
               showToast('Kindly enter a search input','warning', 'hide');
@@ -28,7 +30,7 @@
                   queryType = "artist";
                 }
 
-                searchService.searchSpotify(queryString, queryType).then(showResults);
+                searchService.searchSpotify(queryString, queryType, "").then(showResults);
                 //showResults();
             }
         } // BTN CLICK

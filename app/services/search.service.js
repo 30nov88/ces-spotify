@@ -17,19 +17,20 @@
 
         ////////////
 
-        function searchSpotify(queryString, queryType){
+        function searchSpotify(queryString, queryType, queryUrl){
             var tmpStr = localStorage.length + 1;
             var savePattern = tmpStr + "_" + queryString + "_" + queryType;
+            
+            tmpStr = constants.apiURL + encodeURIComponent(queryString) + "&type=" + constants[queryType];
+            var urlStr = (queryUrl==="") ? tmpStr : queryUrl;
             //var storageValue = localStorage.getItem(savePattern);
 
             return $http({
                   method: 'GET',
-                  url: constants.apiURL + encodeURIComponent(queryString) + "&type=" + constants[queryType],
+                  url: urlStr,
             }).then(successCallback).catch(errorCallback);
 
             function successCallback(response){
-                $('.loader').fadeOut();
-
                 // SAVE ONLY THE LAST 20 SEARCH RESULTS
                 if(localStorage.length >= 20)
                     localStorage.clear();

@@ -1,12 +1,29 @@
 
 <span ng-repeat="(key,val) in vm.result.jsonStr.artists">
-    <span ng-if="key==='items'">
-        <span ng-repeat="(keyName, elems) in val" class="resultBlock">
-            {{elems.name}}
-            <!--<img ng-if="elems.images.length>0" src="{{elems.images[0].url}}" alt="img missing">-->
+    <div>
+        <span ng-if="key==='items'">
+            <span ng-repeat="(keyName, elems) in val" class="resultBlock">
+                <div>
+                    <span title="">{{elems.name}}</span>
+                    <span class="followersMeta">followers:{{elems.followers.total | number}}</span>
+                    <img class="imgThumb" src="{{elems.images[0].url}}" ng-show="{{elems.images.length>0}}">
+                </div>
+            </span>
         </span>
-    </span>
-    <span ng-if="key==='total'" class="resultBlock dataBlock">
+    </div>
+    <div>
+        <span ng-if="key==='previous'">
+            <span ng-show="val!==null" class="travButton unselectable prevButton" ng-click="vm.traversePage(val)">Previous</span>
+        </span>
+        <span ng-if="key==='next'">
+            <span ng-show="val!==null" class="travButton unselectable nextButton" ng-click="vm.traversePage(val)">Next</span>
+        </span>
+    </div>
+    <span ng-if="key==='total'" class="dataBlock">
         Total results: {{val}}
+        <div ng-show="vm.counter.end > 0">
+            showing ({{vm.counter.start}} - {{vm.counter.end}})
+        </div>
     </span>
+    
 </span>
