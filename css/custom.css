@@ -167,9 +167,9 @@ html {
     border: 3px solid #4682B4;
     color: #4682B4;
 }
-.nextButton{
+.floatRight{
     float: right;
 }
-.prevButton {
+.floatLeft {
     float: left;
 }
