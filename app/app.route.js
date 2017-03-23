@@ -1,21 +1,22 @@
 (function(){
     'use strict';
     angular
-        .module('spotApp',['ngRoute'])
+        .module('spotApp')
         .config(urlRouting);
         
     urlRouting.$inject = ['$routeProvider', '$locationProvider'];
 
+    /* @ngInject */
     function urlRouting($routeProvider, $locationProvider){
         $locationProvider.html5Mode({enabled: true, requireBase: false});
         $routeProvider
         .when("/", {
-            templateUrl : "views/home.view.html",
+            templateUrl : "app/layout/home.view.html",
             controller: "HomeCtrl",
             controllerAs: "home"
         })
         .when("/result", {
-            templateUrl : "views/result.view.html",
+            templateUrl : "app/layout/result.view.html",
             controller: "ResultCtrl",
             controllerAs: "result"
         })
@@ -23,6 +24,4 @@
             redirectTo: '/'
         });
     }  // URL ROUTING
-
-    $('.loader').fadeOut();
 })();
