@@ -9,6 +9,7 @@
             getParseResult: getParseResult,
             getResult: getResult,
             getCount: getCount,
+            getListCount: getListCount,
             findKeyLocal: findKeyLocal
         };
         var resultObj = {};
@@ -25,6 +26,13 @@
             var countObj = {};
             countObj.start = resultObj.jsonStr.artists.offset + 1;
             countObj.end = resultObj.jsonStr.artists.offset + resultObj.jsonStr.artists.items.length;
+            return countObj;
+        }
+
+        function getListCount(){
+            var countObj = {};
+            countObj.start = resultObj.jsonStr.offset + 1;
+            countObj.end = resultObj.jsonStr.offset + resultObj.jsonStr.items.length;
             return countObj;
         }
 
@@ -51,7 +59,7 @@
 
                 if(patternStart === ""){
                     // ERROR-PRONE
-                    // assumption that the string doesn't have any (other) special characters
+                    // assumption that the search string doesn't have any (other) special characters
                     tmpKey = tmpKey.split("_");
                     resultObj.type = (tmpKey[2] === "artist") ? true : false;
                     resultObj.searchQuery = tmpKey[1];

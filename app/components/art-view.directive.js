@@ -35,25 +35,30 @@
         var vm = this;
         vm.init = init;
         vm.traversePage = traversePage;
+        vm.traverseList = traverseList;
         vm.artistClick = artistClick;
 
         vm.init();
 
         function init(){
-            vm.artistView = true;
+            vm.viewType = 'artist';
             vm.result = getResultService.getResult();
             vm.counter = getResultService.getCount();
-            vm.artistResult = {};
         }
 
         function artistClick(spotID){
             $('.loader').show();
-            vm.artistView = false;
+            vm.viewType = 'album';
             searchService.searchArtAlbum(spotID).then(function(){
-                vm.artistResult = getResultService.getParseResult("artist_");
-                //vm.counter = getResultService.getCount();
+                vm.result = getResultService.getParseResult("artist_");
+                vm.counter = getResultService.getListCount();
                 $('.loader').fadeOut();
             });
+        }
+
+        function traverseList(urlStr){
+            //$('.loader').show();
+            alert(urlStr);
         }
 
         function traversePage(urlStr){

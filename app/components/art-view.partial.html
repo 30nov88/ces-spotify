@@ -1,4 +1,4 @@
-<span ng-if="vm.artistView">
+<span ng-if="vm.viewType==='artist'">
     <span ng-repeat="(key,val) in vm.result.jsonStr.artists">
         <div><span ng-if="key==='items'">
             <span ng-repeat="(keyName, elems) in val" class="resultBlock unselectable" ng-click="vm.artistClick(elems.uri)">
@@ -25,9 +25,31 @@
         </span>
     </span>
 </span>
-<span ng-if="vm.artistView===false">
+<span ng-if="vm.viewType==='album'">
     <h3 class="floatLeft">Albums</h3>
-    <span ng-repeat="(key, val) in vm.artistResult.jsonStr.items" class="resultBlock unselectable">
-        <span>{{val.name}}</span>
+    <div>
+        <span ng-repeat="(key, val) in vm.result.jsonStr.items" class="resultBlock unselectable">
+            <span>{{val.name}}</span>
+            <div>
+                <img class="imgThumb" src="{{val.images[0].url}}" ng-show="{{val.images.length>0}}">
+            </div>
+        </span>
+    </div>
+    <div>
+        <span ng-show="vm.result.jsonStr.previous !== null" class="travButton unselectable floatLeft" ng-click="vm.traverseList(vm.result.jsonStr.previous)">
+            Previous
+        </span>
+        <span ng-show="vm.result.jsonStr.next !== null" class="travButton unselectable floatRight" ng-click="vm.traverseList(vm.result.jsonStr.next)">
+            Next
+        </span>
+    </div>
+    <span class="dataBlock">
+        Total results: {{vm.result.jsonStr.total}}
+        <div ng-show="vm.counter.end > 0">
+            showing ({{vm.counter.start}} - {{vm.counter.end}})
+        </div>
     </span>
+</span>
+<span ng-if="vm.viewType==='song'">
+    
 </span>
