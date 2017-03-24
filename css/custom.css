@@ -183,3 +183,11 @@ html {
 .extraMargin {
     margin: 10%;
 }
+.listView {
+    display: block;
+    float: right;
+    clear: both;
+    width: 100%;
+    border: 1px solid gray;
+    text-align: center;
+}

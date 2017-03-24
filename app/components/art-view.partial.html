@@ -1,7 +1,10 @@
 <span ng-if="vm.viewType==='artist'">
+    
+    <!--RESULT ARTISTS-->
+    
     <span ng-repeat="(key,val) in vm.result.jsonStr.artists">
         <div><span ng-if="key==='items'">
-            <span ng-repeat="(keyName, elems) in val" class="resultBlock unselectable" ng-click="vm.artistClick(elems.uri)">
+            <span ng-repeat="(keyName, elems) in val" class="resultBlock unselectable" ng-click="vm.resultClick(elems.href, 'album')">
                 <div >
                     <span title="">{{elems.name}}</span>
                     <span class="followersMeta">followers:{{elems.followers.total | number}}</span>
@@ -25,16 +28,25 @@
         </span>
     </span>
 </span>
-<span ng-if="vm.viewType==='album'">
-    <h3 class="floatLeft extraMargin">Albums</h3>
+<span ng-if="vm.viewType!=='artist'">
+    
+    <!--ARTIST'S ALBUMS / SONGS-->
+    
+    <h3 class="floatLeft extraMargin">{{vm.viewType | uppercase}}S</h3>
     <div>
-        <span ng-repeat="(key, val) in vm.result.jsonStr.items" class="resultBlock unselectable noHover">
-            <div>
+        <span ng-repeat="(key, val) in vm.result.jsonStr.items" >
+            <span ng-if="vm.viewType==='song'" class=" unselectable listView">
                 <span>{{val.name}}</span>
                 <div>
                     <img class="imgThumb" src="{{val.images[0].url}}" ng-show="{{val.images.length>0}}">
                 </div>
-            </div>
+            </span>
+            <span ng-if="vm.viewType !== 'song'" ng-click="vm.resultClick(val.href, 'song')" class="resultBlock unselectable ">
+                <span>{{val.name}}</span>
+                <div>
+                    <img class="imgThumb" src="{{val.images[0].url}}" ng-show="{{val.images.length>0}}">
+                </div>
+            </span>
         </span>
     </div>
     <div>
@@ -52,6 +64,9 @@
         </div>
     </span>
 </span>
-<span ng-if="vm.viewType==='song'">
+<!--<span ng-if="vm.viewType==='song'">
     
-</span>
+    ARTIST'S SONGS
+    
+    SONGS HERE
+</span>-->

@@ -18,26 +18,22 @@
 
         ////////////
 
-        function searchSpotify(queryString, queryType, queryUrl){
+        // USED IN HOME.CTRL, ART-VIEW.DIRECTIVE
+        function searchSpotify(queryString, queryType, queryUrl, addQuery){
             tmpStr = localStorage.length + 1;
+            savePattern = queryType+ "_" + tmpStr + "_" + queryString;
 
-            if(queryUrl === "" && queryType === "album"){
-                // SEARCH FOR AN ARTIST'S ALBUMS
-                queryString = queryString.replace("spotify:artist:","");
-                savePattern = "artist_" + tmpStr + "_" + queryString;
-                urlStr = constants.artistsURL + queryString + "/albums";
-            } else if(queryUrl === "" && queryType === "artist"){
-                // SEARCH FOR ARTIST
-                savePattern = tmpStr + "_" + queryString + "_" + queryType;
+            if(queryUrl === ""){
+                // SEARCH FOR ARTIST OR SONG
                 urlStr = constants.searchURL + encodeURIComponent(queryString) + "&type=" + constants[queryType];
-            } else if(queryType === "artist"){
-                // PAGE TRAVERSAL IN ARTIST'S SEARCH
-                savePattern = tmpStr + "_" + queryString + "_" + queryType;
-                urlStr = queryUrl;
             } else {
-                // PAGE TRAVERSAL IN A ARTIST'S ALBUMS
-                savePattern = "artist_" + tmpStr + "_" + queryString;
-                urlStr = queryUrl;
+                // PAGE TRAVERSAL AND RESULT CLICK
+                if(addQuery === "")
+                    urlStr = queryUrl;
+                else if(addQuery === "album")
+                    urlStr = queryUrl + "/albums";
+                else if (addQuery === "song")
+                    urlStr = queryUrl + "/tracks";
             }
 
             return $http({

@@ -30,7 +30,7 @@
                   queryType = "artist";
                 }
 
-                searchService.searchSpotify(queryString, queryType, "").then(showResults);
+                searchService.searchSpotify(queryString, queryType, "", "").then(showResults);
                 //showResults();
             }
         } // BTN CLICK

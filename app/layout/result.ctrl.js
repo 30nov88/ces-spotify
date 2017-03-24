@@ -16,7 +16,9 @@
         init();
 
         function init(){
-            vm.resultObj = getResultService.getParseResult("");
+            // REQUIRED CODE CHANGE
+            vm.viewType = "artist";
+            vm.resultObj = getResultService.getParseResult(vm.viewType);
 
             $('.loader').fadeOut();
             vm.type = vm.resultObj.type;

@@ -22,6 +22,7 @@
             return resultObj;
         }
 
+        // USED IN ART-VIEW.DIRECTIVE
         // TO GET PAGE COUNT
         function getCount(){
             var countObj = {};
@@ -29,6 +30,9 @@
             if(resultObj.jsonStr.artists !== undefined){
                 countObj.start = resultObj.jsonStr.artists.offset + 1;
                 countObj.end = resultObj.jsonStr.artists.offset + resultObj.jsonStr.artists.items.length;
+            /*} else if(resultObj.jsonStr.tracks !== undefined){
+                countObj.start = resultObj.jsonStr.tracks.offset + 1;
+                countObj.end = resultObj.jsonStr.tracks.offset + resultObj.jsonStr.tracks.items.length;*/
             } else {
                 countObj.start = resultObj.jsonStr.offset + 1;
                 countObj.end = resultObj.jsonStr.offset + resultObj.jsonStr.items.length;
@@ -49,22 +53,22 @@
             return tmpKey;
         }
 
+        // USED IN ART-VIEW.DIRECTIVE
         // TO GET THE LAST SEARCHED ITEM THROUGH LOCAL STORAGE
         function getParseResult(patternStart){
-            var tmpStr = patternStart + localStorage.length + "_";
+            var tmpStr = patternStart + "_" + localStorage.length + "_";
+
             var tmpKey = findKeyLocal(tmpStr);
 
             if(tmpKey !== undefined) {
                 tmpKey = localStorage.key(tmpKey);
                 tmpStr = localStorage[tmpKey];
 
-                if(patternStart === ""){
-                    // ERROR-PRONE
-                    // assumption that the search string doesn't have any underscore character
-                    tmpKey = tmpKey.split("_");
-                    resultObj.type = (tmpKey[2] === "artist") ? true : false;
-                    resultObj.searchQuery = tmpKey[1];
-                }
+                // ERROR-PRONE
+                // assumption that the search string doesn't have any underscore character
+                tmpKey = tmpKey.split("_");
+                resultObj.type = (tmpKey[0] === "artist") ? true : false;
+                resultObj.searchQuery = tmpKey[2];
                 resultObj.jsonStr = JSON.parse(tmpStr);
             }
 

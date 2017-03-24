@@ -4,10 +4,12 @@
     <div class="dataBlock"> Search results for <span class="strong"> &quot;{{result.searchQuery}}&quot;</span></div>
 
     <div ng-if="result.type" id="divArtists">
+        <!--SEARCH BY ARTIST NAME-->
         <artists-view></artists-view>
     </div>
     
     <div ng-if="!result.type" diid="divSongs">
+        <!--SEARCH BY SONG NAME-->
         SONGS VIEW
     </div>
 </div>
