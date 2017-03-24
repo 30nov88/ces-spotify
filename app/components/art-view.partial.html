@@ -26,20 +26,22 @@
     </span>
 </span>
 <span ng-if="vm.viewType==='album'">
-    <h3 class="floatLeft">Albums</h3>
+    <h3 class="floatLeft extraMargin">Albums</h3>
     <div>
-        <span ng-repeat="(key, val) in vm.result.jsonStr.items" class="resultBlock unselectable">
-            <span>{{val.name}}</span>
+        <span ng-repeat="(key, val) in vm.result.jsonStr.items" class="resultBlock unselectable noHover">
             <div>
-                <img class="imgThumb" src="{{val.images[0].url}}" ng-show="{{val.images.length>0}}">
+                <span>{{val.name}}</span>
+                <div>
+                    <img class="imgThumb" src="{{val.images[0].url}}" ng-show="{{val.images.length>0}}">
+                </div>
             </div>
         </span>
     </div>
     <div>
-        <span ng-show="vm.result.jsonStr.previous !== null" class="travButton unselectable floatLeft" ng-click="vm.traverseList(vm.result.jsonStr.previous)">
+        <span ng-show="vm.result.jsonStr.previous !== null" class="travButton unselectable floatLeft" ng-click="vm.traversePage(vm.result.jsonStr.previous)">
             Previous
         </span>
-        <span ng-show="vm.result.jsonStr.next !== null" class="travButton unselectable floatRight" ng-click="vm.traverseList(vm.result.jsonStr.next)">
+        <span ng-show="vm.result.jsonStr.next !== null" class="travButton unselectable floatRight" ng-click="vm.traversePage(vm.result.jsonStr.next)">
             Next
         </span>
     </div>

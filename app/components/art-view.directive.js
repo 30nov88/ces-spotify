@@ -35,7 +35,6 @@
         var vm = this;
         vm.init = init;
         vm.traversePage = traversePage;
-        vm.traverseList = traverseList;
         vm.artistClick = artistClick;
 
         vm.init();
@@ -49,26 +48,22 @@
         function artistClick(spotID){
             $('.loader').show();
             vm.viewType = 'album';
-            searchService.searchArtAlbum(spotID).then(function(){
-                vm.result = getResultService.getParseResult("artist_");
-                vm.counter = getResultService.getListCount();
-                $('.loader').fadeOut();
-            });
-        }
-
-        function traverseList(urlStr){
-            //$('.loader').show();
-            alert(urlStr);
+            searchService.searchSpotify(spotID, vm.viewType, "")
+                .then(renderTraversal);
         }
 
         function traversePage(urlStr){
             $('.loader').show();
-            searchService.searchSpotify(vm.result.searchQuery, "artist", urlStr)
+            searchService.searchSpotify(vm.result.searchQuery, vm.viewType, urlStr)
                 .then(renderTraversal);
         }
 
         function renderTraversal(){
-            vm.result = getResultService.getParseResult("");
+            var tmpStr = "";
+            if(vm.viewType === 'album')
+                tmpStr = "artist_";
+
+            vm.result = getResultService.getParseResult(tmpStr);
             vm.counter = getResultService.getCount();
             $('.loader').fadeOut();
         }

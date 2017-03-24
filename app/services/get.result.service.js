@@ -9,7 +9,6 @@
             getParseResult: getParseResult,
             getResult: getResult,
             getCount: getCount,
-            getListCount: getListCount,
             findKeyLocal: findKeyLocal
         };
         var resultObj = {};
@@ -18,24 +17,26 @@
 
         ////////////
 
+        // TO BE CALLED ONLY AFTER GET-PARSE-RESULT
         function getResult(){
             return resultObj;
         }
 
+        // TO GET PAGE COUNT
         function getCount(){
             var countObj = {};
-            countObj.start = resultObj.jsonStr.artists.offset + 1;
-            countObj.end = resultObj.jsonStr.artists.offset + resultObj.jsonStr.artists.items.length;
+            
+            if(resultObj.jsonStr.artists !== undefined){
+                countObj.start = resultObj.jsonStr.artists.offset + 1;
+                countObj.end = resultObj.jsonStr.artists.offset + resultObj.jsonStr.artists.items.length;
+            } else {
+                countObj.start = resultObj.jsonStr.offset + 1;
+                countObj.end = resultObj.jsonStr.offset + resultObj.jsonStr.items.length;
+            }
             return countObj;
         }
 
-        function getListCount(){
-            var countObj = {};
-            countObj.start = resultObj.jsonStr.offset + 1;
-            countObj.end = resultObj.jsonStr.offset + resultObj.jsonStr.items.length;
-            return countObj;
-        }
-
+        // TO GET THE LAST SAVED ITEM USING THE PATTERN - INTERNAL USE
         function findKeyLocal(inpPattern){
             var tmpKey = 0, tmpStr = "";
             for(var i = 0; i<localStorage.length; i++) {
@@ -48,9 +49,9 @@
             return tmpKey;
         }
 
+        // TO GET THE LAST SEARCHED ITEM THROUGH LOCAL STORAGE
         function getParseResult(patternStart){
-            var tmpStr = patternStart + localStorage.length + "_"
-            // TO GET THE LAST SEARCHED ITEM USING SAVE PATTERN
+            var tmpStr = patternStart + localStorage.length + "_";
             var tmpKey = findKeyLocal(tmpStr);
 
             if(tmpKey !== undefined) {
@@ -59,7 +60,7 @@
 
                 if(patternStart === ""){
                     // ERROR-PRONE
-                    // assumption that the search string doesn't have any (other) special characters
+                    // assumption that the search string doesn't have any underscore character
                     tmpKey = tmpKey.split("_");
                     resultObj.type = (tmpKey[2] === "artist") ? true : false;
                     resultObj.searchQuery = tmpKey[1];

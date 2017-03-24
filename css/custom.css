@@ -173,3 +173,13 @@ html {
 .floatLeft {
     float: left;
 }
+.noHover:hover {
+    cursor: default;
+    background-color: #FFF;
+}
+.extraPadding {
+    padding: 10%;
+}
+.extraMargin {
+    margin: 10%;
+}
