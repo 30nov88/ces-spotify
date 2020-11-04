@@ -1,4 +1,4 @@
-# vamaash.github.io
+# Assignment for CES - Spotify app
 
 
 
